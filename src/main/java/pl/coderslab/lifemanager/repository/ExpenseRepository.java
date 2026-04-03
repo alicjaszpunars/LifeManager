@@ -9,10 +9,13 @@ import java.util.List;
 
 public interface ExpenseRepository extends JpaRepository<Expense, Long> {
 
+    //pobieranie dla dnia
     List<Expense> findAllByDailyEntry(DailyEntry dailyEntry);
 
+    //pobieranie dla kategorii
     List<Expense> findAllByCategory(ExpenseCategory category);
 
+    //pobieranie dla dat od do
     List<Expense> findAllByDailyEntry_Date_Between(LocalDate startDate, LocalDate endDate);
 
 }

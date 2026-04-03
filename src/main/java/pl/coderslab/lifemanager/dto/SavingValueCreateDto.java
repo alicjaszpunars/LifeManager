@@ -1,19 +1,22 @@
-package pl.coderslab.lifemanager.DTO;
-
+package pl.coderslab.lifemanager.dto;
 
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
-import pl.coderslab.lifemanager.entity.Mood;
 
 import java.time.LocalDate;
 
+
 @Getter
 @Setter
-public class DailyCreateDto {
+public class SavingValueCreateDto {
 
     @NotNull
     private LocalDate date;
-    private Mood mood;
-    private String diary;
+
+    @NotNull
+    @Positive
+    private  double amount;
+
 }

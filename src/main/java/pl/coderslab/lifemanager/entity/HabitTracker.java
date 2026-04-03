@@ -15,18 +15,19 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "habits")
+@Table(name = "habit_tracker")
 public class HabitTracker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    private String name;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "habit_id")
+    private Habit habit;
+
 
     private Boolean done;
-    private Boolean active;
-
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "daily_entry_id")

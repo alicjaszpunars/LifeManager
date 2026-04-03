@@ -1,4 +1,4 @@
-package pl.coderslab.lifemanager.DTO;
+package pl.coderslab.lifemanager.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -7,19 +7,28 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+
+
 @Getter
 @Setter
-public class SavingCurrencyCreateDto {
+public class SavingStockCreateDto {
+
+    @NotBlank
+    private String name;
+
+    @NotBlank
+    private String ticker;
+
+    @NotNull
+    @Positive
+    private double quantity;
 
     @NotBlank
     private String currencyCode;
 
-    @NotNull
-    @Positive
-    private double amount;
-
     private LocalDate startDate;
 
     private String comment;
+
 
 }

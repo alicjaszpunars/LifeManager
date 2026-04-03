@@ -5,7 +5,7 @@ import pl.coderslab.lifemanager.entity.ExpenseCategory;
 
 import java.util.Optional;
 
-public interface ExpanseCategoryRepository extends JpaRepository<ExpenseCategory, Long> {
+public interface ExpenseCategoryRepository extends JpaRepository<ExpenseCategory, Long> {
 
     Optional<ExpenseCategory> findByCategory(String name);
 //Optional jasno komunikuje, że encja może nie istnieć w bazie danych. Wymusza to świadomą

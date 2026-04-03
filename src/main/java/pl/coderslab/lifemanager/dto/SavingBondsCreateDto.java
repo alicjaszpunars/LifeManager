@@ -1,4 +1,4 @@
-package pl.coderslab.lifemanager.DTO;
+package pl.coderslab.lifemanager.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
