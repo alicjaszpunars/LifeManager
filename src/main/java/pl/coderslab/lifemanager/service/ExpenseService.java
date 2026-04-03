@@ -29,7 +29,6 @@ public class ExpenseService {
     private final ExpenseRepository expenseRepository;
     private final ExpenseCategoryRepository expenseCategoryRepository;
     private final DailyEntryService dailyEntryService;
-    private final InitializingBean optionalLiveReloadServer;
 
     //to robi @RequiredArgsConstructor
 //    public ExpenseService(DailyEntryRepository dailyEntryRepository,

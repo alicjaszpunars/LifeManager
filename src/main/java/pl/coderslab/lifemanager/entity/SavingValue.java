@@ -25,9 +25,9 @@ public class SavingValue {
     private Saving saving;
 
     @NotNull
-    private BigDecimal value;
+    private double value;
 
     @NotNull
-    private LocalDate valueDate;
+    private LocalDate date;
 
 }

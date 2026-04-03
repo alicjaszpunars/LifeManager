@@ -11,7 +11,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-//zarzadza definicja oszczednosci -> jakie rodzaje , ale nie interesuje tutaj nas wartosc ani poczatkowa ani aktualna
+//zarzadza definicja oszczednosci -> jakie rodzaje, ale nie interesuje tutaj nas wartosc ani poczatkowa ani aktualna
 public class SavingService {
 
     private final SavingsRepository savingsRepository;
@@ -27,6 +27,7 @@ public class SavingService {
         saving.setComment(dto.getComment());
 
         //ustaw date -> jesli podana to wpisz, jak nie to wpisz dzisiejsza
+        //-> mozna to wyniesc wyzej dla wszystkich jako metoda bo sie powtarza
         saving.setStartDate(dto.getStartDate() !=null ? dto.getStartDate() : LocalDate.now());
         return  savingsRepository.save(saving);
     }
