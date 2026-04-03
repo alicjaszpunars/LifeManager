@@ -16,7 +16,7 @@ public class SavingCurrencyCreateDto {
 
     @NotNull
     @Positive
-    private double amount;
+    private double quantity;
 
     private LocalDate startDate;
 

@@ -15,7 +15,7 @@ public class SavingBondsCreateDto {
 
     @NotNull
     @Positive
-    private double quantity;
+    private int quantity;
 
     @NotNull
     @Positive

@@ -12,8 +12,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "saving_stock")
 public class SavingStock extends Saving{
-    private String ticket;
+    private String ticker;
     private String currencyCode;
     private double quantity;
-    private String comments;
+    private String comment;
 }

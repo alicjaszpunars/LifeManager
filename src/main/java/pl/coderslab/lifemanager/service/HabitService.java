@@ -5,7 +5,6 @@ package pl.coderslab.lifemanager.service;
 //ale moze byc wiele nawykow kazdego dnia
 
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Service;
 import pl.coderslab.lifemanager.dto.HabitCreateDto;
 import pl.coderslab.lifemanager.dto.HabitStatusDto;
@@ -17,7 +16,6 @@ import pl.coderslab.lifemanager.repository.HabitRepository;
 import pl.coderslab.lifemanager.repository.HabitTrackerRepository;
 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -53,21 +51,35 @@ public class HabitService {
 
     //ustawianie statusu dla dnia
     public HabitTracker setHabitTracker(HabitStatusDto dto) {
+
+        //sprawdzenie czy istnieje nawyk
         Habit habit = habitRepository.findById(dto.getHabitId())
                 .orElseThrow(() -> new IllegalArgumentException("Habit not found " + dto.getHabitId()));
-        habit.setActive(false);
 
-        if (!Boolean.TRUE.equals((habit.getActive()))) {
+        //sprawdzenie czy aktywny
+        if (!Boolean.TRUE.equals((habit.getActive()))) { //dziala nawet dla pustej wartosci
             throw new IllegalArgumentException("Habit is not active");
         }
 
+        //pobranie lub utworzenie
         DailyEntry day = dailyEntryService.getOrCreate(dto.getDate());
+
+        //sprawdzenie czy istnieje juz ten nawyk tego dnia
+        //optional bo moze nie istniec
+        //jesli istnieje -> aktualizuje wartosc
+        //jesli nie istnieje -> stworzenie wpisu dla tego dnia i tego nawyku
         Optional<HabitTracker> existing = habitTrackerRepository.findByHabitAndDailyEntry(habit, day);
         if (existing.isPresent()) {
             HabitTracker tracker = existing.get();
             tracker.setDone(dto.getDone());
             return habitTrackerRepository.save(tracker);
-        } else throw new IllegalArgumentException("Habit does not exist");
+        }
+        HabitTracker tracker = new HabitTracker();
+        tracker.setHabit(habit);
+        tracker.setDailyEntry(day);
+        tracker.setDone(dto.getDone());
+
+        return habitTrackerRepository.save(tracker);
 
     }
 

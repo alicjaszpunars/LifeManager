@@ -14,5 +14,5 @@ import lombok.Setter;
 public class SavingCurrency extends  Saving{
     private String currencyCode;
     private  double quantity;
-    private String comments;
+    private String comment;
 }

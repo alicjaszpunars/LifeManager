@@ -27,5 +27,5 @@ public class SavingBond extends Saving {
         return getStartDate().plusYears(durationYears);
     }
 
-    private String comments;
+    private String comment;
 }

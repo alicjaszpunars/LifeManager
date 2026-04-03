@@ -14,10 +14,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "saving_deposits")
 public class SavingDeposit extends Saving {
-    private int duration_days; //w dniach na jaki czas lokata
 
-    public LocalDate endDate() {
-        return getStartDate().plusDays(duration_days);
-    }
-    private String comments;
+    private  double amount;
+    private String comment;
 }
