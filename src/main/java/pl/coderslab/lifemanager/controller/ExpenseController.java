@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/lifeManager/expenses")
+@RequestMapping("/expense")
 
 //kontroler ma zwracac na razie encje
 public class ExpenseController {

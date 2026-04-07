@@ -49,6 +49,7 @@ public class SavingService {
     public Saving createSavingCurrency (SavingCurrencyCreateDto dto){
         SavingCurrency savingCurrency = new SavingCurrency();
         savingCurrency.setCurrencyCode(dto.getCurrencyCode());
+        savingCurrency.setName(dto.getCurrencyCode()); //musi byc nazwa bo w saving jest nazwa
         savingCurrency.setQuantity(dto.getQuantity());
         savingCurrency.setComment(dto.getComment());
 

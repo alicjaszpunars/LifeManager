@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/lifeManager/incomes")
+@RequestMapping("/income")
 public class IncomeController {
 
     private final IncomeService incomeService;
