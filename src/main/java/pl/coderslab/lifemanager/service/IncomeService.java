@@ -41,7 +41,7 @@ public class IncomeService {
         income.setDailyEntry(day);
         income.setIncomeCategory(category);
 
-        return income;
+        return incomeRepository.save(income);
 
     }
 

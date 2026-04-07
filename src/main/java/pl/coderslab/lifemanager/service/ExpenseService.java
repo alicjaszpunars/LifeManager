@@ -55,7 +55,7 @@ public class ExpenseService {
         expense.setDailyEntry(day);
         expense.setCategory(category);
 
-        return expense;
+        return expenseRepository.save(expense);
     }
 
     //edycja wydatku
