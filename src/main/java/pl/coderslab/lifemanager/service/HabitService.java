@@ -24,7 +24,6 @@ import java.util.Optional;
 @Service
 public class HabitService {
 
-    private final DailyEntryRepository dailyEntryRepository;
     private final HabitTrackerRepository habitTrackerRepository;
     private final HabitRepository habitRepository;
     private final DailyEntryService dailyEntryService;
@@ -105,5 +104,10 @@ public class HabitService {
 
         return habitTrackerRepository.findAllByHabitAndDailyEntry_DateBetween(habit, startDate, endDate);
 
+    }
+
+    //lista aktywnych nawykow
+    public List<Habit> getActiveHabits(){
+        return habitRepository.findAllByActiveTrue();
     }
 }

@@ -1,5 +1,8 @@
 package pl.coderslab.lifemanager.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import pl.coderslab.lifemanager.dto.CategorySumDto;
 import pl.coderslab.lifemanager.entity.DailyEntry;
 import pl.coderslab.lifemanager.entity.ExpenseCategory;
 import pl.coderslab.lifemanager.entity.Expense;
@@ -17,5 +20,19 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
 
     //pobieranie dla dat od do
     List<Expense> findAllByDailyEntry_Date_Between(LocalDate startDate, LocalDate endDate);
+
+    //sumowanie po kategoriach -> reczna kwerenda
+
+    @Query("""
+    SELECT new pl.coderslab.lifemanager.dto.CategorySumDto(
+        e.category.category,
+        SUM (e.amount)
+    )
+    FROM Expense e
+    WHERE e.dailyEntry = :entry
+    GROUP BY e.category.category
+""")
+    List<CategorySumDto> ExpenseCategoryForDay(@Param("entry") DailyEntry entry);
+
 
 }

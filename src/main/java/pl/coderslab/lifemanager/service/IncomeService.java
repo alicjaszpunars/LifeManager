@@ -4,6 +4,7 @@ package pl.coderslab.lifemanager.service;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.coderslab.lifemanager.dto.CategorySumDto;
 import pl.coderslab.lifemanager.dto.IncomeCreateDto;
 import pl.coderslab.lifemanager.entity.DailyEntry;
 import pl.coderslab.lifemanager.entity.Income;
@@ -68,6 +69,13 @@ public class IncomeService {
     }
 
     //income po kategoriach
+    public List<CategorySumDto> dailyIncomeByCategory (LocalDate date){
+        Optional<DailyEntry> entry = dailyEntryService.findByDate(date);
+        if (entry.isEmpty()){
+            return Collections.emptyList();
+        }
+        return incomeRepository.IncomeCategoryForDay(entry.get());
+    }
 
 
 }

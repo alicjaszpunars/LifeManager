@@ -18,7 +18,6 @@ import java.time.LocalDate;
 @Table(name = "saving_PPK")
 public class SavingPPK  extends Saving{
 
-    @Lob
     private String comment;
 
 }

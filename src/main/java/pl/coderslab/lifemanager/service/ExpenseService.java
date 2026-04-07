@@ -3,6 +3,7 @@ package pl.coderslab.lifemanager.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
+import pl.coderslab.lifemanager.dto.CategorySumDto;
 import pl.coderslab.lifemanager.dto.ExpenseCreateDto;
 import pl.coderslab.lifemanager.entity.DailyEntry;
 import pl.coderslab.lifemanager.entity.Expense;
@@ -88,5 +89,12 @@ public class ExpenseService {
 
 
 //pobieranie dla kategorii
+    public List<CategorySumDto> dailyExpenseByCategory (LocalDate date){
+        Optional<DailyEntry> entry = dailyEntryService.findByDate(date);
+        if (entry.isEmpty()){
+            return Collections.emptyList();
+        }
+        return expenseRepository.ExpenseCategoryForDay(entry.get());
+    }
 
 }
