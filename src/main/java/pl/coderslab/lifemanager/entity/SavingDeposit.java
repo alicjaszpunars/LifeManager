@@ -17,4 +17,13 @@ public class SavingDeposit extends Saving {
 
     private  double amount;
     private String comment;
+
+
+    public static final String TYPE = "DEPOSIT";
+
+    @Override
+    public String getSavingType() {
+        return TYPE;
+    }
+
 }

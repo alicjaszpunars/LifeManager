@@ -9,6 +9,11 @@ import pl.coderslab.lifemanager.entity.SavingPPK;
 @Setter
 public class SavingSummaryDto {
     private String savingType;
-    private Double amount;
+    private Double startAmount;
+    private Double endAmount;
+    private Double changeAmount;
+    private Double percentage;
+
+
 
 }

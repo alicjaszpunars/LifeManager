@@ -19,9 +19,9 @@ public interface SavingValueRepository extends JpaRepository<SavingValue, Long> 
     Optional<SavingValue> findTopBySavingAndDateLessThanEqualOrderByDateDesc(Saving saving, LocalDate date);
 
 
-    //cala hisotria
-    Optional<SavingValue> findAllBySavingOrderByDateDesc(Saving saving);
-
-    //cala historia dla id
-    Optional<SavingValue> findAllBySavingIdOrderByDateAsc(Long savingId);
+//    //cala hisotria
+//    Optional<SavingValue> findAllBySavingOrderByDateDesc(Saving saving);
+//
+//    //cala historia dla id
+//    Optional<SavingValue> findAllBySavingIdOrderByDateAsc(Long savingId);
 }

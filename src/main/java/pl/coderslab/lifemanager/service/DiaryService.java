@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 @RequiredArgsConstructor
 @Service
-public class JournalService {
+public class DiaryService {
 
     private final DailyEntryRepository dailyEntryRepository;
     private final  DailyEntryService dailyEntryService;

@@ -15,4 +15,12 @@ public class SavingCurrency extends  Saving{
     private String currencyCode;
     private  double quantity;
     private String comment;
+
+    public static final String TYPE = "CURRENCY";
+
+    @Override
+    public String getSavingType() {
+        return TYPE;
+    }
+
 }

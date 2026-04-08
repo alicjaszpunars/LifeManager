@@ -6,12 +6,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class HabitViewDailyDto {
-    private Long habitId;
     private String habitName;
     private Boolean done;
 
-    public HabitViewDailyDto(Long habitId, String habitName, Boolean done) {
-        this.habitId = habitId;
+    public HabitViewDailyDto(String habitName, Boolean done) {
         this.habitName = habitName;
         this.done = done;
     }

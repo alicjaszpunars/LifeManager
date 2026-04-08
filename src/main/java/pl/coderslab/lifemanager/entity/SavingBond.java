@@ -28,4 +28,13 @@ public class SavingBond extends Saving {
     }
 
     private String comment;
+
+
+    public static final String TYPE = "BOND";
+
+    @Override
+    public String getSavingType() {
+        return TYPE;
+    }
+
 }

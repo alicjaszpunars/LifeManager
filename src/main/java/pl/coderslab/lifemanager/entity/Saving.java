@@ -30,4 +30,8 @@ public abstract class Saving {
     @PastOrPresent
     private LocalDate startDate;
 
+
+    public abstract String getSavingType(); //zeby latwiej potem dzielic na kategorie
 }
+
+

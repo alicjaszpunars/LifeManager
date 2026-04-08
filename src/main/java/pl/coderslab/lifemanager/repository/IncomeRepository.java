@@ -32,5 +32,17 @@ public interface IncomeRepository extends JpaRepository <Income, Long> {
 """)
     List<CategorySumDto> IncomeCategoryForDay(@Param("entry") DailyEntry entry);
 
+    //sumowanie po kategoriach dla okresu  -> reczna kwerenda
+    @Query("""
+    SELECT new pl.coderslab.lifemanager.dto.CategorySumDto(
+        i.incomeCategory.category,
+        SUM (i.amount)
+    )
+    FROM Income i
+    WHERE i.dailyEntry.date BETWEEN :startDate AND :endDate
+    GROUP BY i.incomeCategory.category
+""")
+    List<CategorySumDto> sumIncomeCategoryForPeriod(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+
 
 }

@@ -20,5 +20,14 @@ public class SavingPPK  extends Saving{
 
     private String comment;
 
+
+    public static final String TYPE = "PPK";
+
+    @Override
+    public String getSavingType() {
+        return TYPE;
+    }
+
+
 }
 
