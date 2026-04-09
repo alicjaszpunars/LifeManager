@@ -23,7 +23,6 @@ public class Expense {
     @PositiveOrZero
     private Double amount;
 
-    @Lob
     private String comment;
 
     @ManyToOne(optional = false)

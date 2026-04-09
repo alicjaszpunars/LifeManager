@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/expense")
 
-//kontroler ma zwracac na razie encje
+
 public class ExpenseController {
 
     private final ExpenseService expenseService;

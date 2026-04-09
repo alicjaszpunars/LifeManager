@@ -24,10 +24,10 @@ public class DailyEntryService {
 
     //znajdowanie po dacie a jak nie ma to tworzenie nowego
     // -> zwraca optional bo w repo jest optional
-    // finad zwraca -> albo optional z obiektem albo pusty jesli nie ma
+    // find zwraca -> albo optional z obiektem albo pusty jesli nie ma
     // jak pusty -> tworzy nowy obiekt
 
-    @Transactional
+    @Transactional //wykonuje te operacje razem
     public DailyEntry getOrCreate(LocalDate date){
         return dailyEntryRepository
                 .findByDate(date)

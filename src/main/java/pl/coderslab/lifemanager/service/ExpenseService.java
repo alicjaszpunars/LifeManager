@@ -26,20 +26,10 @@ import java.util.Optional;
 public class ExpenseService {
 
 
-    private final DailyEntryRepository dailyEntryRepository;
     private final ExpenseRepository expenseRepository;
     private final ExpenseCategoryRepository expenseCategoryRepository;
     private final DailyEntryService dailyEntryService;
 
-    //to robi @RequiredArgsConstructor
-//    public ExpenseService(DailyEntryRepository dailyEntryRepository,
-//                          ExpenseRepository expenseRepository,
-//                          ExpenseCategoryRepository expenseCategoryRepository, DailyEntryService dailyEntryService) {
-//        this.dailyEntryRepository = dailyEntryRepository;
-//        this.expenseRepository = expenseRepository;
-//        this.expenseCategoryRepository = expenseCategoryRepository;
-//        this.dailyEntryService = dailyEntryService;
-//    }
 
     //dodanie nowego wydatku
     //wydatek MUSI miec date (pobieramy z daily) i kategorie (pobieramy), jak nie ma -> wyjatek

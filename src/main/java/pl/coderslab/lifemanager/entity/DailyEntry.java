@@ -30,7 +30,6 @@ public class DailyEntry {
     @Enumerated(EnumType.STRING)
     private Mood mood;
 
-    @Lob
     private String diary;
 
 
