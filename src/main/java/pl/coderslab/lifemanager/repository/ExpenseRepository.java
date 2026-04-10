@@ -1,4 +1,5 @@
 package pl.coderslab.lifemanager.repository;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -24,26 +25,26 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
     //sumowanie po kategoriach dla dnia  -> reczna kwerenda
 
     @Query("""
-    SELECT new pl.coderslab.lifemanager.dto.CategorySumDto(
-        e.category.category,
-        SUM (e.amount)
-    )
-    FROM Expense e
-    WHERE e.dailyEntry = :entry
-    GROUP BY e.category.category
-""")
+                SELECT new pl.coderslab.lifemanager.dto.CategorySumDto(
+                    e.category.category,
+                    SUM (e.amount)
+                )
+                FROM Expense e
+                WHERE e.dailyEntry = :entry
+                GROUP BY e.category.category
+            """)
     List<CategorySumDto> ExpenseCategoryForDay(@Param("entry") DailyEntry entry);
 
     //sumowanie po kategoriach dla okresu  -> reczna kwerenda
     @Query("""
-    SELECT new pl.coderslab.lifemanager.dto.CategorySumDto(
-        e.category.category,
-        SUM (e.amount)
-    )
-    FROM Expense e
-    WHERE e.dailyEntry.date BETWEEN :startDate AND :endDate
-    GROUP BY e.category.category
-""")
+                SELECT new pl.coderslab.lifemanager.dto.CategorySumDto(
+                    e.category.category,
+                    SUM (e.amount)
+                )
+                FROM Expense e
+                WHERE e.dailyEntry.date BETWEEN :startDate AND :endDate
+                GROUP BY e.category.category
+            """)
     List<CategorySumDto> sumExpenseCategoryForPeriod(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
 

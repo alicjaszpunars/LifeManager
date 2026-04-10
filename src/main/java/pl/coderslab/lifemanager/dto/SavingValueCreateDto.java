@@ -17,6 +17,6 @@ public class SavingValueCreateDto {
 
     @NotNull
     @Positive
-    private  double value;
+    private double value;
 
 }

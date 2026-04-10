@@ -21,7 +21,7 @@ public class SavingValueService {
     private final SavingsRepository savingsRepository;
 
 
-    //dodanie wartosci aktualnej
+    //dodanie wartosci aktualnej manualnie
     public SavingValue addValue(Long savingId, SavingValueCreateDto dto) {
         Saving saving = savingsRepository.findById(savingId)
                 .orElseThrow(() -> new IllegalArgumentException("Saving not found " + savingId));
@@ -31,6 +31,15 @@ public class SavingValueService {
         value.setDate(dto.getDate());
 
         return savingValueRepository.save(value);
+    }
+
+    // zapisanie wartosci sciagnietej
+    public SavingValue saveMarketValue(Saving saving, LocalDate date, double value){
+        SavingValue savingValue= new SavingValue();
+        savingValue.setSaving(saving);
+        savingValue.setDate(date);
+        savingValue.setValue(value);
+        return savingValueRepository.save(savingValue);
     }
 
     //aktualna wartosc (ostatni wpis)
@@ -71,16 +80,14 @@ public class SavingValueService {
             }
         }
         return result;
+
+
     }
 
+    //sprawdzenie czy jest wpis z dnia
+    public boolean existForDate (Saving saving, LocalDate date ){
+        return savingValueRepository.findBySavingAndDate(saving,date).isPresent();
+    }
 
-//    public List<SavingValue> getValueAtDate(LocalDate date) {
-//        return savingsRepository.findAll().stream() //zwraca wszystkie
-//                .map(saving -> getValue(saving.getId(), date)) //zamienia Saving na optionala czy ma wartosc na ten dzien czy nie
-//                .flatMap(Optional::stream) //
-//                .filter(value -> value.getValue() > 0)
-//                .toList();
-//
-//    }
 
 }

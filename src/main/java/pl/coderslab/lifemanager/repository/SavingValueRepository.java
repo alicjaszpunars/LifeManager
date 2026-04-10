@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface SavingValueRepository extends JpaRepository<SavingValue, Long> {
     //pierwsza wartosc
-    Optional<SavingValue>findFirstBySavingOrderByDateAsc(Saving saving);
+    Optional<SavingValue> findFirstBySavingOrderByDateAsc(Saving saving);
 
     //aktualna wartosc
     Optional<SavingValue> findFirstBySavingOrderByDateDesc(Saving saving);
@@ -17,6 +17,12 @@ public interface SavingValueRepository extends JpaRepository<SavingValue, Long> 
     //wartosc na dzien
 
     Optional<SavingValue> findTopBySavingAndDateLessThanEqualOrderByDateDesc(Saving saving, LocalDate date);
+
+    //czy istnieje dla daty
+
+    Optional<SavingValue> findBySavingAndDate(Saving saving, LocalDate date);
+
+
 
 
 //    //cala hisotria

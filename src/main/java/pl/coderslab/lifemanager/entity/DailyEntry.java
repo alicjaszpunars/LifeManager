@@ -33,10 +33,4 @@ public class DailyEntry {
     private String diary;
 
 
-
-
-
-
-
-
 }

@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "saving_stock")
-public class SavingStock extends Saving{
+public class SavingStock extends Saving {
     private String ticker;
     private String currencyCode;
     private double quantity;
@@ -23,6 +23,11 @@ public class SavingStock extends Saving{
     @Override
     public String getSavingType() {
         return TYPE;
+    }
+
+    //do liczenia wartosci
+    public double calculateValue(double stockPrice, double currencyRate){
+        return quantity* stockPrice * currencyRate;
     }
 
 }

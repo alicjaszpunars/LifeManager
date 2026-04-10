@@ -13,20 +13,21 @@ import java.time.LocalDate;
 public class MoodController {
 
     private final MoodService moodService;
-    public MoodController(MoodService moodService){
-        this.moodService=moodService;
+
+    public MoodController(MoodService moodService) {
+        this.moodService = moodService;
     }
 
     //tworzenie mood dla dnia
-    @PostMapping ("/{date}")
-    public DailyEntry setMood (@PathVariable LocalDate date, @RequestBody Mood mood){
+    @PostMapping("/{date}")
+    public DailyEntry setMood(@PathVariable LocalDate date, @RequestBody Mood mood) {
         return moodService.setMood(date, mood);
     }
 
     //zwracanie mood dla dnia
-    @GetMapping ("/{date}")
-    public  Mood getMood (@PathVariable LocalDate date){
-        return  moodService.getMood(date);
+    @GetMapping("/{date}")
+    public Mood getMood(@PathVariable LocalDate date) {
+        return moodService.getMood(date);
     }
 
 }

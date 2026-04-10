@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "saving_PPK")
-public class SavingPPK  extends Saving{
+public class SavingPPK extends Saving {
 
     private String comment;
 

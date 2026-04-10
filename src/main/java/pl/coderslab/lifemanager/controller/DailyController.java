@@ -1,4 +1,5 @@
 package pl.coderslab.lifemanager.controller;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 //kontroler ma odbierac dane, wywoluje serwis, zwraca wynik -> BEZ LOGIKI
 //ma wstrzykniety service- kontroler komunikuje sie z serwisem, nie z repo
 @RestController
-@RequestMapping ("/day")
+@RequestMapping("/day")
 public class DailyController {
 
     private final DailyViewService dailyViewService;
@@ -24,7 +25,7 @@ public class DailyController {
 
     //tylko get zwraca wszystko dotyczace jednego dnia
     @GetMapping("/{date}")
-    public DailyEntryDto getDay(@PathVariable LocalDate date){
+    public DailyEntryDto getDay(@PathVariable LocalDate date) {
         return dailyViewService.getDailyView(date);
 
     }

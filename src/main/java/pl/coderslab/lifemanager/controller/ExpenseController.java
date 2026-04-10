@@ -18,29 +18,29 @@ public class ExpenseController {
     private final ExpenseService expenseService;
 
     public ExpenseController(ExpenseService expenseService) {
-        this.expenseService= expenseService;
+        this.expenseService = expenseService;
     }
 
 
     //post dodanie wydatku
 
     @PostMapping
-    public Expense add (@RequestBody ExpenseCreateDto dto){
+    public Expense add(@RequestBody ExpenseCreateDto dto) {
         return expenseService.createExpense(dto);
 
     }
     //get- wydatki z dnia
 
     @GetMapping("day/{date}")
-    public List<Expense> getDailyEspenses(@PathVariable LocalDate date){
+    public List<Expense> getDailyEspenses(@PathVariable LocalDate date) {
         return expenseService.dailyExpense(date);
     }
 
     //get- wydatki z okresu
 
     @GetMapping("/period")
-    public List<Expense>getPeriodExpanses(@RequestParam LocalDate start, @RequestParam LocalDate end){
-        return  expenseService.periodExpense(start, end);
+    public List<Expense> getPeriodExpanses(@RequestParam LocalDate start, @RequestParam LocalDate end) {
+        return expenseService.periodExpense(start, end);
     }
 }
 

@@ -12,7 +12,7 @@ import pl.coderslab.lifemanager.entity.IncomeCategory;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface IncomeRepository extends JpaRepository <Income, Long> {
+public interface IncomeRepository extends JpaRepository<Income, Long> {
     List<Income> findAllByDailyEntry(DailyEntry dailyEntry);
 
     List<Income> findAllByIncomeCategory(IncomeCategory incomeCategory);
@@ -22,26 +22,26 @@ public interface IncomeRepository extends JpaRepository <Income, Long> {
     //sumowanie po kategoriach -> reczna kwerenda
 
     @Query("""
-    SELECT new pl.coderslab.lifemanager.dto.CategorySumDto(
-        i.incomeCategory.category,
-        SUM (i.amount)
-    )
-    FROM Income i
-    WHERE i.dailyEntry = :entry
-    GROUP BY i.incomeCategory.category
-""")
+                SELECT new pl.coderslab.lifemanager.dto.CategorySumDto(
+                    i.incomeCategory.category,
+                    SUM (i.amount)
+                )
+                FROM Income i
+                WHERE i.dailyEntry = :entry
+                GROUP BY i.incomeCategory.category
+            """)
     List<CategorySumDto> IncomeCategoryForDay(@Param("entry") DailyEntry entry);
 
     //sumowanie po kategoriach dla okresu  -> reczna kwerenda
     @Query("""
-    SELECT new pl.coderslab.lifemanager.dto.CategorySumDto(
-        i.incomeCategory.category,
-        SUM (i.amount)
-    )
-    FROM Income i
-    WHERE i.dailyEntry.date BETWEEN :startDate AND :endDate
-    GROUP BY i.incomeCategory.category
-""")
+                SELECT new pl.coderslab.lifemanager.dto.CategorySumDto(
+                    i.incomeCategory.category,
+                    SUM (i.amount)
+                )
+                FROM Income i
+                WHERE i.dailyEntry.date BETWEEN :startDate AND :endDate
+                GROUP BY i.incomeCategory.category
+            """)
     List<CategorySumDto> sumIncomeCategoryForPeriod(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
 

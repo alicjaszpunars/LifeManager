@@ -36,7 +36,7 @@ public class Income {
 
     @ManyToOne(optional = false)
     //jeden przychod ma jeden dzien, ale jeden dzien moze miec wiele przychodow
-    @JoinColumn(name="daily_entry_id")
+    @JoinColumn(name = "daily_entry_id")
     private DailyEntry dailyEntry;
 
 }

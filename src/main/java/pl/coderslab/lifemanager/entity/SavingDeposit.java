@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @Table(name = "saving_deposits")
 public class SavingDeposit extends Saving {
 
-    private  double amount;
+    private double amount;
     private String comment;
 
 

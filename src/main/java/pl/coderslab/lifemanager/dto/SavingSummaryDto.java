@@ -15,5 +15,4 @@ public class SavingSummaryDto {
     private Double percentage;
 
 
-
 }
