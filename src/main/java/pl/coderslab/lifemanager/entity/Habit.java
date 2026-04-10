@@ -16,7 +16,7 @@ public class Habit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank (message= "name is necessary")
     private String name;
     private Boolean active;
 }

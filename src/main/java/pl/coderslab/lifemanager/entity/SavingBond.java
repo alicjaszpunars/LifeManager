@@ -17,9 +17,9 @@ import java.time.LocalDate;
 public class SavingBond extends Saving {
 
 
-    @Positive
+    @Positive (message= "positive value only")
     private int quantity;
-    @Positive
+    @Positive(message= "positive value only")
     private int durationYears;
 
     public LocalDate maturityDate() {

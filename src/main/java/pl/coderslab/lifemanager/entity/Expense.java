@@ -20,7 +20,7 @@ public class Expense {
     private Long id;
 
     @NotNull
-    @PositiveOrZero
+    @PositiveOrZero(message= "must be possitive value")
     private Double amount;
 
     private String comment;

@@ -23,11 +23,11 @@ public abstract class Saving {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotNull(message= "name is necessary")
     private String name;
 
     @NotNull
-    @PastOrPresent
+    @PastOrPresent(message= "data cannot be in the future")
     private LocalDate startDate;
 
 

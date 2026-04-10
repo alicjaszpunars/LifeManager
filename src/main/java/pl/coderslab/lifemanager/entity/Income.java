@@ -23,10 +23,9 @@ public class Income {
     private Long id_incomes;
 
     @NotNull
-    @PositiveOrZero
+    @PositiveOrZero(message= "must be positive value")
     private Double amount;
 
-    @Lob
     private String comment;
 
 

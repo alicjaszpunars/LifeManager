@@ -2,6 +2,7 @@ package pl.coderslab.lifemanager.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import lombok.Setter;
 public class SavingStock extends Saving {
     private String ticker;
     private String currencyCode;
+    @Positive(message= "positive value only")
     private double quantity;
     private String comment;
 

@@ -23,7 +23,7 @@ public class DailyEntry {
     private Long id;
 
     @NotNull
-    @PastOrPresent
+    @PastOrPresent (message= "data cannot be in the future")
     @Column(nullable = false, unique = true)
     private LocalDate date = LocalDate.now();
 
