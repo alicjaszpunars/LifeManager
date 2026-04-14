@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.coderslab.lifemanager.dto.DailyEntryDto;
-import pl.coderslab.lifemanager.service.DailyEntryService;
 import pl.coderslab.lifemanager.service.DailyViewService;
 
 import java.time.LocalDate;

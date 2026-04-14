@@ -8,7 +8,6 @@ import pl.coderslab.lifemanager.dto.HabitStatusDto;
 import pl.coderslab.lifemanager.entity.DailyEntry;
 import pl.coderslab.lifemanager.entity.Habit;
 import pl.coderslab.lifemanager.entity.HabitTracker;
-import pl.coderslab.lifemanager.repository.DailyEntryRepository;
 import pl.coderslab.lifemanager.repository.HabitRepository;
 import pl.coderslab.lifemanager.repository.HabitTrackerRepository;
 

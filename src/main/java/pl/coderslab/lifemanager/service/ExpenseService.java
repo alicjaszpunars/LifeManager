@@ -1,14 +1,12 @@
 package pl.coderslab.lifemanager.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 import pl.coderslab.lifemanager.dto.CategorySumDto;
 import pl.coderslab.lifemanager.dto.ExpenseCreateDto;
 import pl.coderslab.lifemanager.entity.DailyEntry;
 import pl.coderslab.lifemanager.entity.Expense;
 import pl.coderslab.lifemanager.entity.ExpenseCategory;
-import pl.coderslab.lifemanager.repository.DailyEntryRepository;
 import pl.coderslab.lifemanager.repository.ExpenseCategoryRepository;
 import pl.coderslab.lifemanager.repository.ExpenseRepository;
 

@@ -3,9 +3,6 @@ package pl.coderslab.lifemanager.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import pl.coderslab.lifemanager.entity.Expense;
-import pl.coderslab.lifemanager.entity.HabitTracker;
-import pl.coderslab.lifemanager.entity.Income;
 import pl.coderslab.lifemanager.entity.Mood;
 
 import java.time.LocalDate;

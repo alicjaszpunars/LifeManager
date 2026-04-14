@@ -1,7 +1,7 @@
 package pl.coderslab.lifemanager.service;
 
 
-import jakarta.persistence.criteria.CriteriaBuilder;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.coderslab.lifemanager.dto.CategorySumDto;
@@ -22,12 +22,9 @@ import java.util.Optional;
 @Service
 public class IncomeService {
 
-    private final DailyEntryRepository dailyEntryRepository;
     private final IncomeRepository incomeRepository;
     private final IncomeCategoryRepository incomeCategoryRepository;
     private final DailyEntryService dailyEntryService;
-
-    //dodnie nowego income
 
     public Income createIncome(IncomeCreateDto dto) {
         DailyEntry day = dailyEntryService.getOrCreate(dto.getDate());

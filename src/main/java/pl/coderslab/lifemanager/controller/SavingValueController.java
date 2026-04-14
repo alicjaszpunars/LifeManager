@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.lifemanager.dto.SavingValueCreateDto;
 import pl.coderslab.lifemanager.entity.SavingValue;
-import pl.coderslab.lifemanager.service.SavingService;
 import pl.coderslab.lifemanager.service.SavingValueService;
 
 import java.time.LocalDate;
