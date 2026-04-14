@@ -46,7 +46,6 @@ public class IncomeService {
 
     }
 
-    //edycja income
 
     //income z dnia
 

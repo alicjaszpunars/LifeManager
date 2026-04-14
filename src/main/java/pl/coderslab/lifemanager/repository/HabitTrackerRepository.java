@@ -11,7 +11,6 @@ import java.util.Optional;
 
 public interface HabitTrackerRepository extends JpaRepository<HabitTracker, Long> {
 
-    //zeby sprawdzic czy nie dublujemy habitow dla dnia
     Optional<HabitTracker> findByHabitAndDailyEntry(
             Habit habit,
             DailyEntry dailyEntry

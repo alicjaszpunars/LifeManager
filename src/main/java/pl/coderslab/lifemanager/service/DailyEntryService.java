@@ -21,13 +21,7 @@ public class DailyEntryService {
         this.dailyEntryRepository = dailyEntryRepository;
     }
 
-
-    //znajdowanie po dacie a jak nie ma to tworzenie nowego
-    // -> zwraca optional bo w repo jest optional
-    // find zwraca -> albo optional z obiektem albo pusty jesli nie ma
-    // jak pusty -> tworzy nowy obiekt
-
-    @Transactional //wykonuje te operacje razem
+    @Transactional
     public DailyEntry getOrCreate(LocalDate date){
         return dailyEntryRepository
                 .findByDate(date)
@@ -36,7 +30,6 @@ public class DailyEntryService {
                     return dailyEntryRepository.save(entry);});
     }
 
-    //sprawdzenie czy wpis z takiego dnia istnieje zwroci pusty lub obiekt
     public Optional<DailyEntry> findByDate(LocalDate date){
         return dailyEntryRepository.findByDate(date);
     }

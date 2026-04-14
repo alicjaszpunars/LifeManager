@@ -28,7 +28,6 @@ public class SavingCurrency extends Saving {
         return TYPE;
     }
 
-    //do liczenia wartosci z api
     public double calculateValue(double rate){
         return rate* quantity;
     }

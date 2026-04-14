@@ -43,7 +43,6 @@ public class SavingValueService {
     }
 
     //aktualna wartosc (ostatni wpis)
-    //optional bo mozne byc utworzony saving ale bez wartosci
     public Optional<SavingValue> getLatestValue(Long savingId) {
         Saving saving = savingsRepository.findById(savingId)
                 .orElseThrow(() -> new IllegalArgumentException("Saving not found " + savingId));

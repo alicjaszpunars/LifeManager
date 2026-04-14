@@ -18,9 +18,6 @@ import java.util.List;
 import java.util.Optional;
 
 
-//Użytkownik dodaje / edytuje / przegląda wydatek przypisany do konkretnego dnia
-// musi powiązać wydatek z dniem i kategorią oraz go zapisac
-
 @RequiredArgsConstructor
 @Service
 public class ExpenseService {
@@ -32,8 +29,6 @@ public class ExpenseService {
 
 
     //dodanie nowego wydatku
-    //wydatek MUSI miec date (pobieramy z daily) i kategorie (pobieramy), jak nie ma -> wyjatek
-    //utworzenie nowego
     public Expense createExpense(ExpenseCreateDto dto) {
         DailyEntry day = dailyEntryService.getOrCreate(dto.getDate());
         ExpenseCategory category = expenseCategoryRepository
@@ -49,11 +44,8 @@ public class ExpenseService {
         return expenseRepository.save(expense);
     }
 
-    //edycja wydatku
-    // public Expense editExpanse
 
     //pobranie wydatków dla dnia
-    //najpierw musimy sprawdzic czy jest jakis wpis -> jak nie ma to wyrzuci pusta liste
     public List<Expense> dailyExpense(LocalDate date) {
         Optional<DailyEntry> entry = dailyEntryService.findByDate(date);
         if (entry.isEmpty()) {

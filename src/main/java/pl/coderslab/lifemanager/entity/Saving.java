@@ -31,7 +31,7 @@ public abstract class Saving {
     private LocalDate startDate;
 
 
-    public abstract String getSavingType(); //zeby latwiej potem dzielic na kategorie
+    public abstract String getSavingType();
 }
 
 

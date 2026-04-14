@@ -1,12 +1,13 @@
 package pl.coderslab.lifemanager.controller;
 
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.lifemanager.entity.DailyEntry;
 import pl.coderslab.lifemanager.service.DiaryService;
 
 import java.time.LocalDate;
-
+@Tag(name = "02. Diary", description = "Daily journal")
 @RestController
 @RequestMapping("/diary")
 public class DiaryController {
@@ -17,14 +18,14 @@ public class DiaryController {
         this.diaryService = diaryService;
     }
 
-    //tworzenie diary dla dnia
+
     @PostMapping("/{date}")
     public DailyEntry setDiary(@PathVariable LocalDate date, @RequestBody String diary) {
         return diaryService.setDiary(date, diary);
     }
 
 
-    //pobieranie diary z dnia
+
     @GetMapping("/{date}")
     public String getDiary(@PathVariable LocalDate date) {
         return diaryService.getDiary(date);

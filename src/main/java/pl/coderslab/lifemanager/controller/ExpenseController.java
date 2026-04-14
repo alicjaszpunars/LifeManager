@@ -1,6 +1,7 @@
 package pl.coderslab.lifemanager.controller;
 
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.lifemanager.dto.ExpenseCreateDto;
 import pl.coderslab.lifemanager.entity.Expense;
@@ -9,6 +10,7 @@ import pl.coderslab.lifemanager.service.ExpenseService;
 import java.time.LocalDate;
 import java.util.List;
 
+@Tag(name = "06. Expense", description = "Daily expense")
 @RestController
 @RequestMapping("/expense")
 
@@ -21,22 +23,16 @@ public class ExpenseController {
         this.expenseService = expenseService;
     }
 
-
-    //post dodanie wydatku
-
     @PostMapping
     public Expense add(@RequestBody ExpenseCreateDto dto) {
         return expenseService.createExpense(dto);
 
     }
-    //get- wydatki z dnia
 
     @GetMapping("day/{date}")
     public List<Expense> getDailyEspenses(@PathVariable LocalDate date) {
         return expenseService.dailyExpense(date);
     }
-
-    //get- wydatki z okresu
 
     @GetMapping("/period")
     public List<Expense> getPeriodExpanses(@RequestParam LocalDate start, @RequestParam LocalDate end) {

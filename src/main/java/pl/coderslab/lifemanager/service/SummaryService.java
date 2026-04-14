@@ -26,7 +26,7 @@ public class SummaryService {
     private final HabitRepository habitRepository;
 
 
-    //----------------------------------wydatki i przychody
+    //wydatki i przychody
 
     public List<CategorySumDto> getExpenseSummary(LocalDate startDate, LocalDate endDate) {
         return expenseRepository.sumExpenseCategoryForPeriod(startDate, endDate);
@@ -36,10 +36,10 @@ public class SummaryService {
         return incomeRepository.sumIncomeCategoryForPeriod(startDate, endDate);
     }
 
-    //----------------------------------nawyki
+    //nawyki
 
     public List<HabitViewSummaryDto> getHabitSummary(LocalDate startDate, LocalDate endDate) {
-        List<Habit> habits = habitRepository.findAllByActiveTrue(); //znajdujemy wszystkie aktywne
+        List<Habit> habits = habitRepository.findAllByActiveTrue();
         List<HabitViewSummaryDto> results = new ArrayList<>();
 
         for (Habit habit : habits) {
@@ -56,23 +56,19 @@ public class SummaryService {
     }
 
 
-    //----------------------------------oszczednosci
-    // -> robimy globalna sume do liczenia procentow
-    //rozrozniamy na kategorie, przechodzimy petla po kazdym saving dopasowujemy do kategorii jak istnieje i powiekszamy jej sume
-    //jak to pierwszy z rodzaju to tworzymy nowa kategorie i suma 0
+    //oszczednosci
 
     public List<SavingSummaryDto> getSavingSummary(LocalDate startDate, LocalDate endDate) {
-        List<Saving> savings = savingsRepository.findAll(); //pobieram wszystkie
+        List<Saving> savings = savingsRepository.findAll();
 
 
         Map<String, SavingSummaryDto> summaryByCategory = new HashMap<>();
-        //tworze mape do przypisania klucz np bonds: summarydto - wartosci start, end, change, %
+
         double totalEndAmount = 0;
 
-        //pierwsza petla idzie po kazdym saving i wpisuje wartosc poczatkowa i koncowa
 
         for (Saving saving : savings) {
-            String type = saving.getSavingType(); //przypisuje typ
+            String type = saving.getSavingType();
             double startValue = savingValueRepository.findTopBySavingAndDateLessThanEqualOrderByDateDesc(saving, startDate)
                     .map(SavingValue::getValue)
                     .orElse(0.0);
@@ -81,7 +77,6 @@ public class SummaryService {
                     .orElse(0.00);
 
             SavingSummaryDto dto = summaryByCategory.get(type);
-            //jak jeszcze nie ma to tworzymy nowe dto dla kategorii
             if (dto == null) {
                 dto = new SavingSummaryDto();
                 dto.setSavingType(type);
@@ -94,10 +89,8 @@ public class SummaryService {
             dto.setEndAmount(dto.getEndAmount() + endValue);
             totalEndAmount += endValue;
 
-
         }
 
-        //druga petla jak ma juz wartosci dla kazdej kategorii to wpisuje zmiane i %
         for (SavingSummaryDto dto : summaryByCategory.values()) {
             dto.setChangeAmount(dto.getEndAmount() - dto.getStartAmount());
             double percentage = Math.round((dto.getEndAmount() / totalEndAmount * 100) * 100.0) / 100.0;
@@ -105,13 +98,11 @@ public class SummaryService {
 
         }
 
-        //nie pokazujemy jesli cos mialo 0 na start i end
-        List<SavingSummaryDto> result= new ArrayList<>();
-        for (SavingSummaryDto dto : summaryByCategory.values()){
-            if (dto.getStartAmount() != 0.0 || dto.getEndAmount() !=0.0)
+        List<SavingSummaryDto> result = new ArrayList<>();
+        for (SavingSummaryDto dto : summaryByCategory.values()) {
+            if (dto.getStartAmount() != 0.0 || dto.getEndAmount() != 0.0)
                 result.add(dto);
         }
-
 
         return result;
     }

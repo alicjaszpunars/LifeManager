@@ -11,7 +11,6 @@ import pl.coderslab.lifemanager.entity.Mood;
 import java.time.LocalDate;
 import java.util.List;
 
-//widok dzienny bedzie tylko agregowal dane dla 1 dnia -> wszystko w 1 miejscu, read only
 @Getter
 @Setter
 public class DailyEntryDto {

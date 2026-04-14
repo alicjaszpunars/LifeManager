@@ -27,7 +27,6 @@ public class SavingStock extends Saving {
         return TYPE;
     }
 
-    //do liczenia wartosci
     public double calculateValue(double stockPrice, double currencyRate){
         return quantity* stockPrice * currencyRate;
     }

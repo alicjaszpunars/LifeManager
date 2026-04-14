@@ -7,7 +7,6 @@ import pl.coderslab.lifemanager.entity.SavingCurrency;
 import pl.coderslab.lifemanager.entity.SavingStock;
 import pl.coderslab.lifemanager.repository.SavingsRepository;
 
-import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class MarketValueService {
             if (saving instanceof SavingCurrency currency) {
                 double rate = currencyApiService.getRate(currency.getCurrencyCode());
                 double value = currency.calculateValue(rate);
-                value=Math.round(value*100.0)/100.0;
+                value = Math.round(value * 100.0) / 100.0;
                 savingValueService.saveMarketValue(saving, today, value);
 
             }
@@ -38,7 +37,7 @@ public class MarketValueService {
                 double stockPrice = stockApiService.getPrice(stock.getTicker());
                 double currencyRate = currencyApiService.getRate(stock.getCurrencyCode());
                 double value = stock.calculateValue(stockPrice, currencyRate);
-                value=Math.round(value*100.0)/100.0;
+                value = Math.round(value * 100.0) / 100.0;
                 savingValueService.saveMarketValue(saving, today, value);
 
                 try {

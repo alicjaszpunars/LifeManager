@@ -22,7 +22,7 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
     //pobieranie dla dat od do
     List<Expense> findAllByDailyEntry_Date_Between(LocalDate startDate, LocalDate endDate);
 
-    //sumowanie po kategoriach dla dnia  -> reczna kwerenda
+    //sumowanie po kategoriach dla dnia
 
     @Query("""
                 SELECT new pl.coderslab.lifemanager.dto.CategorySumDto(
@@ -35,7 +35,7 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
             """)
     List<CategorySumDto> ExpenseCategoryForDay(@Param("entry") DailyEntry entry);
 
-    //sumowanie po kategoriach dla okresu  -> reczna kwerenda
+    //sumowanie po kategoriach dla okresu
     @Query("""
                 SELECT new pl.coderslab.lifemanager.dto.CategorySumDto(
                     e.category.category,
