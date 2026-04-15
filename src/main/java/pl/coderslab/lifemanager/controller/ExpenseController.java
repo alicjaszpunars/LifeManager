@@ -26,7 +26,6 @@ public class ExpenseController {
     @PostMapping
     public Expense add(@RequestBody ExpenseCreateDto dto) {
         return expenseService.createExpense(dto);
-
     }
 
     @GetMapping("day/{date}")
@@ -38,6 +37,7 @@ public class ExpenseController {
     public List<Expense> getPeriodExpanses(@RequestParam LocalDate start, @RequestParam LocalDate end) {
         return expenseService.periodExpense(start, end);
     }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         expenseService.deleteExpense(id);
@@ -45,7 +45,7 @@ public class ExpenseController {
 
     @PutMapping("/{id}")
     public Expense update(@PathVariable Long id, @RequestBody ExpenseCreateDto dto) {
-        return expenseService.updateExpense(id,dto);
+        return expenseService.updateExpense(id, dto);
     }
 }
 

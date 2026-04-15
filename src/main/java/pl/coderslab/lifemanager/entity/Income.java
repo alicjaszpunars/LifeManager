@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,11 +20,10 @@ public class Income {
     private Long id_incomes;
 
     @NotNull
-    @PositiveOrZero(message= "must be positive value")
+    @PositiveOrZero(message = "must be positive value")
     private Double amount;
 
     private String comment;
-
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "income_category_id", nullable = false)

@@ -26,7 +26,7 @@ public class SavingValue {
     private Saving saving;
 
     @NotNull
-    @Positive(message= "positive value only")
+    @Positive(message = "positive value only")
     private double value;
 
     @NotNull

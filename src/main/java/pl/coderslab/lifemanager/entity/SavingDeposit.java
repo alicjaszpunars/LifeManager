@@ -16,8 +16,8 @@ import java.time.LocalDate;
 public class SavingDeposit extends Saving {
 
     private double amount;
-    private String comment;
 
+    private String comment;
 
     public static final String TYPE = "DEPOSIT";
 

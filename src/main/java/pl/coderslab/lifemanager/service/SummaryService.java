@@ -36,7 +36,6 @@ public class SummaryService {
     }
 
     //wydatki i przychody
-
     public List<CategorySumDto> getExpenseSummary(LocalDate startDate, LocalDate endDate) {
         validatePeriod(startDate, endDate);
         return expenseRepository.sumExpenseCategoryForPeriod(startDate, endDate);
@@ -48,7 +47,6 @@ public class SummaryService {
     }
 
     //nawyki
-
     public List<HabitViewSummaryDto> getHabitSummary(LocalDate startDate, LocalDate endDate) {
         validatePeriod(startDate, endDate);
         List<Habit> habits = habitRepository.findAllByActiveTrue();
@@ -69,16 +67,13 @@ public class SummaryService {
 
 
     //oszczednosci
-
     public List<SavingSummaryDto> getSavingSummary(LocalDate startDate, LocalDate endDate) {
         validatePeriod(startDate, endDate);
         List<Saving> savings = savingsRepository.findAll();
 
-
         Map<String, SavingSummaryDto> summaryByCategory = new HashMap<>();
 
         double totalEndAmount = 0;
-
 
         for (Saving saving : savings) {
             String type = saving.getSavingType();
@@ -107,11 +102,10 @@ public class SummaryService {
         for (SavingSummaryDto dto : summaryByCategory.values()) {
             dto.setChangeAmount(dto.getEndAmount() - dto.getStartAmount());
             double percentage = 0.0;
-            if (totalEndAmount>0){
+            if (totalEndAmount > 0) {
                 percentage = Math.round((dto.getEndAmount() / totalEndAmount * 100) * 100.0) / 100.0;
             }
             dto.setPortfolioPercentage(percentage);
-
         }
 
         List<SavingSummaryDto> result = new ArrayList<>();

@@ -8,9 +8,6 @@ import java.util.List;
 
 @Getter
 @Setter
-
-
-
 public class SummaryDto {
 
     private List<HabitViewSummaryDto> habits;
@@ -21,6 +18,4 @@ public class SummaryDto {
 
 
     private List<SavingSummaryDto> savings;
-
-
 }

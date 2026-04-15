@@ -43,19 +43,15 @@ public class HabitService {
         habitRepository.save(habit);
     }
 
-
     //ustawianie statusu dla dnia
     public HabitTracker setHabitTracker(HabitStatusDto dto) {
-
 
         Habit habit = habitRepository.findById(dto.getHabitId())
                 .orElseThrow(() -> new IllegalArgumentException("Habit not found " + dto.getHabitId()));
 
-
         if (!Boolean.TRUE.equals((habit.getActive()))) { //dziala nawet dla pustej wartosci
             throw new IllegalArgumentException("Habit is not active");
         }
-
 
         DailyEntry day = dailyEntryService.getOrCreate(dto.getDate());
 

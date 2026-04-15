@@ -9,11 +9,12 @@ import java.util.Map;
 
 @Service
 public class StockApiService {
-   private final RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
-   public StockApiService() throws  Exception{
-       this.restTemplate=UnsafeRestTemplate.create();
-   }
+    public StockApiService() throws Exception {
+        this.restTemplate = UnsafeRestTemplate.create();
+    }
+
     private final String apiKey = "06YMA1I0K75I1AFW";
 
     public double getPrice(String ticker) {

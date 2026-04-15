@@ -13,12 +13,15 @@ import lombok.Setter;
 @Entity
 @Table(name = "saving_stock")
 public class SavingStock extends Saving {
-    private String ticker;
-    private String currencyCode;
-    @Positive(message= "positive value only")
-    private double quantity;
-    private String comment;
 
+    private String ticker;
+
+    private String currencyCode;
+
+    @Positive(message = "positive value only")
+    private double quantity;
+
+    private String comment;
 
     public static final String TYPE = "STOCK";
 
@@ -27,8 +30,8 @@ public class SavingStock extends Saving {
         return TYPE;
     }
 
-    public double calculateValue(double stockPrice, double currencyRate){
-        return quantity* stockPrice * currencyRate;
+    public double calculateValue(double stockPrice, double currencyRate) {
+        return quantity * stockPrice * currencyRate;
     }
 
 }

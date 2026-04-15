@@ -9,5 +9,4 @@ public interface ExpenseCategoryRepository extends JpaRepository<ExpenseCategory
 
     Optional<ExpenseCategory> findByCategory(String name);
 
-
 }

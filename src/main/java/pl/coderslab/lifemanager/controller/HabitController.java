@@ -10,6 +10,7 @@ import pl.coderslab.lifemanager.service.HabitService;
 
 import java.time.LocalDate;
 import java.util.List;
+
 @Tag(name = "03. Habits ", description = "Habits and their statuses")
 @RestController
 @RequestMapping("/habit")
@@ -43,10 +44,9 @@ public class HabitController {
     }
 
     @GetMapping("/{habitId}/period")
-    public List<HabitTracker> getHabitPeriod
-    (@PathVariable Long habitId,
-     @RequestParam LocalDate start,
-     @RequestParam LocalDate end) {
+    public List<HabitTracker> getHabitPeriod(@PathVariable Long habitId,
+                                             @RequestParam LocalDate start,
+                                             @RequestParam LocalDate end) {
         return habitService.periodHabit(habitId, start, end);
     }
 

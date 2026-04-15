@@ -40,7 +40,6 @@ public class ExpenseService {
         return expenseRepository.save(expense);
     }
 
-
     //pobranie wydatków dla dnia
     public List<Expense> dailyExpense(LocalDate date) {
         Optional<DailyEntry> entry = dailyEntryService.findByDate(date);
@@ -48,13 +47,10 @@ public class ExpenseService {
             return Collections.emptyList();
         }
         return expenseRepository.findAllByDailyEntry(entry.get());
-
     }
 
     //pobranie wydatków dla okresu
-    //tu z zalozenia zbior moze byc pusty
     public List<Expense> periodExpense(LocalDate startDate, LocalDate endDate) {
-
 
         if (endDate.isBefore(startDate)) {
             throw new IllegalArgumentException("End date cannot be before start date");
@@ -64,12 +60,10 @@ public class ExpenseService {
 
     }
 
-
-
-//pobieranie dla kategorii
-    public List<CategorySumDto> dailyExpenseByCategory (LocalDate date){
+    //pobieranie dla kategorii
+    public List<CategorySumDto> dailyExpenseByCategory(LocalDate date) {
         Optional<DailyEntry> entry = dailyEntryService.findByDate(date);
-        if (entry.isEmpty()){
+        if (entry.isEmpty()) {
             return Collections.emptyList();
         }
         return expenseRepository.ExpenseCategoryForDay(entry.get());
@@ -77,7 +71,7 @@ public class ExpenseService {
 
     //edit
     public Expense updateExpense(Long id, ExpenseCreateDto dto) {
-        Expense expense= expenseRepository.findById(id)
+        Expense expense = expenseRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Expense not found: " + id));
 
         ExpenseCategory expenseCategory = expenseCategoryRepository.findByCategory(dto.getCategoryName())
@@ -89,7 +83,6 @@ public class ExpenseService {
         expense.setDailyEntry(day);
 
         return expenseRepository.save(expense);
-
     }
 
     //delete

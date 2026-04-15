@@ -18,7 +18,7 @@ public class DailyViewService {
     private final HabitService habitService;
     private final DiaryService diaryService;
 
-    public DailyEntryDto getDailyView(LocalDate date){
+    public DailyEntryDto getDailyView(LocalDate date) {
         DailyEntryDto dto = new DailyEntryDto();
         dto.setDate(date);
         dto.setMood(moodService.getMood(date));

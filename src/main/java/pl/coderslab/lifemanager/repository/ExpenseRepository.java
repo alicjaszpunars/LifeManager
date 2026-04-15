@@ -19,7 +19,6 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
     List<Expense> findAllByDailyEntry_Date_Between(LocalDate startDate, LocalDate endDate);
 
     //sumowanie po kategoriach dla dnia
-
     @Query("""
                 SELECT new pl.coderslab.lifemanager.dto.CategorySumDto(
                     e.category.category,

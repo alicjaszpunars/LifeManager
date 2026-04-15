@@ -16,7 +16,6 @@ public interface IncomeRepository extends JpaRepository<Income, Long> {
     List<Income> findAllByDailyEntry_Date_Between(LocalDate startDate, LocalDate endDate);
 
     //sumowanie po kategoriach
-
     @Query("""
                 SELECT new pl.coderslab.lifemanager.dto.CategorySumDto(
                     i.incomeCategory.category,

@@ -7,5 +7,6 @@ import pl.coderslab.lifemanager.entity.IncomeCategory;
 import java.util.Optional;
 
 public interface IncomeCategoryRepository extends JpaRepository<IncomeCategory, Long> {
+
     Optional<IncomeCategory> findByCategory(String category);
 }

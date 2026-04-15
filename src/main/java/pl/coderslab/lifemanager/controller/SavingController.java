@@ -8,13 +8,13 @@ import pl.coderslab.lifemanager.repository.SavingsRepository;
 import pl.coderslab.lifemanager.service.SavingService;
 
 import java.util.List;
+
 @Tag(name = "07. Saving", description = "Saving")
 @RestController
 @RequestMapping("saving")
 public class SavingController {
 
     private final SavingService savingService;
-
 
     public SavingController(SavingService savingService, SavingsRepository savingsRepository) {
         this.savingService = savingService;

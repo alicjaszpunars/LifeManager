@@ -6,6 +6,7 @@ import pl.coderslab.lifemanager.dto.SummaryDto;
 import pl.coderslab.lifemanager.service.SummaryService;
 
 import java.time.LocalDate;
+
 @Tag(name = "10. Summary ", description = "Summaries for a user-defined date range including income, expenses, habits and current savings value")
 @RestController
 @RequestMapping("/summary")
@@ -26,8 +27,6 @@ public class SummaryPeriodController {
         dto.setSavings(summaryService.getSavingSummary(startDate, endDate));
 
         return dto;
-
-
     }
 }
 

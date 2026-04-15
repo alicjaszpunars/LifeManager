@@ -2,8 +2,6 @@ package pl.coderslab.lifemanager.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import pl.coderslab.lifemanager.entity.Saving;
-import pl.coderslab.lifemanager.entity.SavingPPK;
 
 @Getter
 @Setter

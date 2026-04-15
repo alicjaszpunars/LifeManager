@@ -8,6 +8,7 @@ import pl.coderslab.lifemanager.entity.Mood;
 import pl.coderslab.lifemanager.service.MoodService;
 
 import java.time.LocalDate;
+
 @Tag(name = "04. Mood", description = "Daily mood")
 @RestController
 @RequestMapping("/mood")

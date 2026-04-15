@@ -38,12 +38,10 @@ public class IncomeService {
         income.setIncomeCategory(category);
 
         return incomeRepository.save(income);
-
     }
 
 
     //income z dnia
-
     public List<Income> dailyIncome(LocalDate date) {
         Optional<DailyEntry> entry = dailyEntryService.findByDate(date);
         if (entry.isEmpty()) {
@@ -52,9 +50,7 @@ public class IncomeService {
         return incomeRepository.findAllByDailyEntry(entry.get());
     }
 
-
     //income z okresu
-
     public List<Income> periodIncome(LocalDate startDate, LocalDate endDate) {
         if (endDate.isBefore(startDate)) {
             throw new IllegalArgumentException("End date cannot be before start date");

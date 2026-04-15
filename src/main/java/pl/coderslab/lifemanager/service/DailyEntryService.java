@@ -20,15 +20,17 @@ public class DailyEntryService {
     }
 
     @Transactional
-    public DailyEntry getOrCreate(LocalDate date){
+    public DailyEntry getOrCreate(LocalDate date) {
         return dailyEntryRepository
                 .findByDate(date)
-                .orElseGet(()-> {DailyEntry entry = new DailyEntry();
+                .orElseGet(() -> {
+                    DailyEntry entry = new DailyEntry();
                     entry.setDate(date);
-                    return dailyEntryRepository.save(entry);});
+                    return dailyEntryRepository.save(entry);
+                });
     }
 
-    public Optional<DailyEntry> findByDate(LocalDate date){
+    public Optional<DailyEntry> findByDate(LocalDate date) {
         return dailyEntryRepository.findByDate(date);
     }
 

@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
 @Tag(name = "08. Saving value", description = "Value at date")
 @RestController
 @RequestMapping("saving/value")
@@ -42,7 +43,7 @@ public class SavingValueController {
     }
 
     @GetMapping("/last_update")
-    public Map<Long, LocalDate> getLastUpdate(){
+    public Map<Long, LocalDate> getLastUpdate() {
         return savingValueService.getLastUpdateDates();
     }
 }

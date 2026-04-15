@@ -18,10 +18,9 @@ public class SavingValueService {
     private final SavingValueRepository savingValueRepository;
     private final SavingsRepository savingsRepository;
 
-
     //dodanie wartosci aktualnej manualnie
     public SavingValue addValue(Long savingId, SavingValueCreateDto dto) {
-        if (dto.getDate().isAfter(LocalDate.now())){
+        if (dto.getDate().isAfter(LocalDate.now())) {
             throw new IllegalArgumentException("Date cannot be in the future");
         }
 
@@ -36,8 +35,8 @@ public class SavingValueService {
     }
 
     // zapisanie wartosci sciagnietej
-    public SavingValue saveMarketValue(Saving saving, LocalDate date, double value){
-        SavingValue savingValue= new SavingValue();
+    public SavingValue saveMarketValue(Saving saving, LocalDate date, double value) {
+        SavingValue savingValue = new SavingValue();
         savingValue.setSaving(saving);
         savingValue.setDate(date);
         savingValue.setValue(value);
@@ -57,7 +56,6 @@ public class SavingValueService {
         Saving saving = savingsRepository.findById(savingId)
                 .orElseThrow(() -> new IllegalArgumentException("Saving not found " + savingId));
         return savingValueRepository.findFirstBySavingOrderByDateAsc(saving);
-
     }
 
 
@@ -70,7 +68,7 @@ public class SavingValueService {
         for (Saving saving : savingsRepository.findAll()) {
 
             Optional<SavingValue> optional =
-            savingValueRepository.findTopBySavingAndDateLessThanEqualOrderByDateDesc(saving, date);
+                    savingValueRepository.findTopBySavingAndDateLessThanEqualOrderByDateDesc(saving, date);
 
             if (optional.isPresent()) {
                 SavingValue value = optional.get();
@@ -81,13 +79,11 @@ public class SavingValueService {
             }
         }
         return result;
-
-
     }
 
     //sprawdzenie czy jest wpis z dnia
-    public boolean existForDate (Saving saving, LocalDate date ){
-        return savingValueRepository.findBySavingAndDate(saving,date).isPresent();
+    public boolean existForDate(Saving saving, LocalDate date) {
+        return savingValueRepository.findBySavingAndDate(saving, date).isPresent();
     }
 
     //daty ostatniej aktualizacji
@@ -101,7 +97,6 @@ public class SavingValueService {
         }
         return result;
     }
-
 
 
 }

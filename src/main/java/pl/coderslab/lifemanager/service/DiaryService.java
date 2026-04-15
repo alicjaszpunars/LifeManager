@@ -13,18 +13,18 @@ import java.time.LocalDate;
 public class DiaryService {
 
     private final DailyEntryRepository dailyEntryRepository;
-    private final  DailyEntryService dailyEntryService;
+    private final DailyEntryService dailyEntryService;
 
     //dodawanie wpisu do dnia
-    public DailyEntry setDiary (LocalDate date, String diary){
-        DailyEntry entry= dailyEntryService.getOrCreate(date);
+    public DailyEntry setDiary(LocalDate date, String diary) {
+        DailyEntry entry = dailyEntryService.getOrCreate(date);
         entry.setDiary(diary);
-        return  dailyEntryRepository.save(entry);
+        return dailyEntryRepository.save(entry);
     }
 
     //pobieranie wpisu dla dnia
-    public String getDiary (LocalDate date){
-        return  dailyEntryService.findByDate(date)
+    public String getDiary(LocalDate date) {
+        return dailyEntryService.findByDate(date)
                 .map(DailyEntry::getDiary)
                 .orElse(null);
     }

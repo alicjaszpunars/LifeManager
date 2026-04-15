@@ -11,10 +11,7 @@ import java.util.Optional;
 
 public interface HabitTrackerRepository extends JpaRepository<HabitTracker, Long> {
 
-    Optional<HabitTracker> findByHabitAndDailyEntry(
-            Habit habit,
-            DailyEntry dailyEntry
-    );
+    Optional<HabitTracker> findByHabitAndDailyEntry(Habit habit, DailyEntry dailyEntry);
 
     List<HabitTracker> findAllByDailyEntry(DailyEntry dailyEntry);
 
