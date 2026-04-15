@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 
 @Service
-@RequiredArgsConstructor //konstruktor dla final
+@RequiredArgsConstructor
 public class DailyViewService {
 
     private final ExpenseService expenseService;

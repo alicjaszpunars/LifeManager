@@ -35,4 +35,15 @@ public class IncomeController {
     public List<Income> getPeriodincomes(@RequestParam LocalDate start, @RequestParam LocalDate end) {
         return incomeService.periodIncome(start, end);
     }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        incomeService.deleteIncome(id);
+    }
+
+    @PutMapping("/{id}")
+    public Income update(@PathVariable Long id, @RequestBody IncomeCreateDto dto) {
+        return incomeService.updateIncome(id, dto);
+    }
+
 }

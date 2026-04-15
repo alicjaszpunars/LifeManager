@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import pl.coderslab.lifemanager.dto.CategorySumDto;
 import pl.coderslab.lifemanager.entity.DailyEntry;
-import pl.coderslab.lifemanager.entity.ExpenseCategory;
 import pl.coderslab.lifemanager.entity.Expense;
 
 import java.time.LocalDate;

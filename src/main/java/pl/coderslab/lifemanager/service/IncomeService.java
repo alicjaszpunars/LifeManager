@@ -1,7 +1,7 @@
 package pl.coderslab.lifemanager.service;
 
 
-
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.coderslab.lifemanager.dto.CategorySumDto;
@@ -9,7 +9,6 @@ import pl.coderslab.lifemanager.dto.IncomeCreateDto;
 import pl.coderslab.lifemanager.entity.DailyEntry;
 import pl.coderslab.lifemanager.entity.Income;
 import pl.coderslab.lifemanager.entity.IncomeCategory;
-import pl.coderslab.lifemanager.repository.DailyEntryRepository;
 import pl.coderslab.lifemanager.repository.IncomeCategoryRepository;
 import pl.coderslab.lifemanager.repository.IncomeRepository;
 
@@ -65,13 +64,38 @@ public class IncomeService {
     }
 
     //income po kategoriach
-    public List<CategorySumDto> dailyIncomeByCategory (LocalDate date){
+    public List<CategorySumDto> dailyIncomeByCategory(LocalDate date) {
         Optional<DailyEntry> entry = dailyEntryService.findByDate(date);
-        if (entry.isEmpty()){
+        if (entry.isEmpty()) {
             return Collections.emptyList();
         }
         return incomeRepository.IncomeCategoryForDay(entry.get());
     }
 
+    //edit
+    public Income updateIncome(Long id, IncomeCreateDto dto) {
+        Income income = incomeRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Income not found: " + id));
 
+        IncomeCategory incomeCategory = incomeCategoryRepository.findByCategory(dto.getCategoryName())
+                .orElseThrow(() -> new IllegalArgumentException("Income category not found: " + dto.getCategoryName()));
+        DailyEntry day = dailyEntryService.getOrCreate(dto.getDate());
+        income.setAmount(dto.getAmount());
+        income.setComment(dto.getComment());
+        income.setIncomeCategory(incomeCategory);
+        income.setDailyEntry(day);
+
+        return incomeRepository.save(income);
+
+    }
+
+    //delete
+    public void deleteIncome(Long id) {
+        if (!incomeRepository.existsById(id)) {
+            throw new IllegalArgumentException("Income not found: " + id);
+        }
+        incomeRepository.deleteById(id);
+    }
 }
+
+
