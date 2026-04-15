@@ -18,6 +18,8 @@ danych oraz obsługę błędów w czytelny sposób.
 - Dodawanie dziennego przychodu
 - Dodawanie dziennego wydatku
 - Zapisywanie dziennego nastroju
+- Dodawanie oszczędności i ich wartości
+- Generowanie dziennych i okresowych podsumowań finansowych
 - Walidacja danych:
     - brak przyszłej daty,
     - brak wartości ujemnych,
@@ -37,14 +39,36 @@ Do uruchomienia projektu wymagane są:
 - IntelliJ IDEA (lub inne IDE obsługujące projekty Spring Boot)
 
 
-## Konfiguracja
+## Uruchomienie projektu i konfiguracja 
 
-Konfiguracja aplikacji znajduje się w pliku `application.properties`.
+1. Sklonuj repozytorium: git clone <adres_repozytorium>
+2. Otwórz projekt w IntelliJ IDEA.
+3. Skonfiguruj połączenie z bazą danych w pliku `application.properties`.
+   Należy skonfigurować połączenie z bazą danych:
+   `
+   spring.datasource.url=jdbc:mysql://localhost:3306/LifeManager
+   spring.datasource.username=root
+   spring.datasource.password=password`
 
-Należy skonfigurować połączenie z bazą danych:
-spring.datasource.url=jdbc:mysql://localhost:3306/LifeManager
-spring.datasource.username=root
-spring.datasource.password=password
+4. Uruchom aplikację jako Spring Boot Application.
+
+Po uruchomieniu aplikacja będzie dostępna pod adresem:
+http://localhost:8080
+
+
+## Instrukcja użycia
+
+Aplikacja działa jako backendowa aplikacja webowa udostępniająca REST API.  
+Po uruchomieniu aplikacji użytkownik może korzystać z dostępnych endpointów
+za pomocą narzędzi takich jak Swagger UI.
+
+Swagger pozwala na testowanie wszystkich operacji aplikacji, takich jak dodawanie
+przychodów, wydatków, zapisywanie nastroju oraz generowanie podsumowań okresowych.
+
+
+Swagger UI dostępny jest pod adresem:
+http://localhost:8080/swagger-ui.html
+
 
 
 ## Zewnętrzne API
@@ -56,7 +80,7 @@ Klucz API jest obecnie zapisany na stałe w kodzie aplikacji i nie wymaga dodatk
 konfiguracji środowiska.
 
 
-## Przykładowy endpoint
+## Dokumentacja API – przykład użycia
 ### Pobranie podsumowania dnia
 
 Pobiera pełne podsumowanie dnia użytkownika, obejmujące nastrój, wpis dziennika, przychody, wydatki oraz nawyki.
@@ -93,11 +117,6 @@ Przykładowa odpowiedź:
 }
 
 ```
-
-
-
-Aplikacja będzie dostępna pod adresem:
-http://localhost:8080
 
 
 

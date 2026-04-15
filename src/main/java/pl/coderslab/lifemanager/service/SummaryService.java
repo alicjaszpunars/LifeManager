@@ -25,20 +25,32 @@ public class SummaryService {
     private final HabitTrackerRepository habitTrackerRepository;
     private final HabitRepository habitRepository;
 
+    //walidacja dat
+    private void validatePeriod(LocalDate startDate, LocalDate endDate) {
+        if (endDate.isBefore(startDate)) {
+            throw new IllegalArgumentException("End date cannot be before start date");
+        }
+        if (endDate.isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("End date cannot be in the future");
+        }
+    }
 
     //wydatki i przychody
 
     public List<CategorySumDto> getExpenseSummary(LocalDate startDate, LocalDate endDate) {
+        validatePeriod(startDate, endDate);
         return expenseRepository.sumExpenseCategoryForPeriod(startDate, endDate);
     }
 
     public List<CategorySumDto> getIncomeSummary(LocalDate startDate, LocalDate endDate) {
+        validatePeriod(startDate, endDate);
         return incomeRepository.sumIncomeCategoryForPeriod(startDate, endDate);
     }
 
     //nawyki
 
     public List<HabitViewSummaryDto> getHabitSummary(LocalDate startDate, LocalDate endDate) {
+        validatePeriod(startDate, endDate);
         List<Habit> habits = habitRepository.findAllByActiveTrue();
         List<HabitViewSummaryDto> results = new ArrayList<>();
 
@@ -59,6 +71,7 @@ public class SummaryService {
     //oszczednosci
 
     public List<SavingSummaryDto> getSavingSummary(LocalDate startDate, LocalDate endDate) {
+        validatePeriod(startDate, endDate);
         List<Saving> savings = savingsRepository.findAll();
 
 
@@ -93,8 +106,11 @@ public class SummaryService {
 
         for (SavingSummaryDto dto : summaryByCategory.values()) {
             dto.setChangeAmount(dto.getEndAmount() - dto.getStartAmount());
-            double percentage = Math.round((dto.getEndAmount() / totalEndAmount * 100) * 100.0) / 100.0;
-            dto.setPercentage(percentage);
+            double percentage = 0.0;
+            if (totalEndAmount>0){
+                percentage = Math.round((dto.getEndAmount() / totalEndAmount * 100) * 100.0) / 100.0;
+            }
+            dto.setPortfolioPercentage(percentage);
 
         }
 

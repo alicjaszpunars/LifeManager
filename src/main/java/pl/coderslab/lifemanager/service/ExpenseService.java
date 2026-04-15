@@ -95,7 +95,7 @@ public class ExpenseService {
     //delete
     public void deleteExpense(Long id) {
         if (!expenseRepository.existsById(id)) {
-            throw new IllegalArgumentException("Income not found: " + id);
+            throw new IllegalArgumentException("Expense not found: " + id);
         }
         expenseRepository.deleteById(id);
     }

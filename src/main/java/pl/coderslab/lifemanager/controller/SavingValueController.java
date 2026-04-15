@@ -9,6 +9,7 @@ import pl.coderslab.lifemanager.service.SavingValueService;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 @Tag(name = "08. Saving value", description = "Value at date")
 @RestController
@@ -38,5 +39,10 @@ public class SavingValueController {
     @GetMapping("/{date}")
     public List<SavingValue> getValueForDate(@PathVariable LocalDate date) {
         return savingValueService.getValueAtDate(date);
+    }
+
+    @GetMapping("/last_update")
+    public Map<Long, LocalDate> getLastUpdate(){
+        return savingValueService.getLastUpdateDates();
     }
 }

@@ -9,9 +9,7 @@ import pl.coderslab.lifemanager.repository.SavingValueRepository;
 import pl.coderslab.lifemanager.repository.SavingsRepository;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RequiredArgsConstructor
 @Service
@@ -23,6 +21,10 @@ public class SavingValueService {
 
     //dodanie wartosci aktualnej manualnie
     public SavingValue addValue(Long savingId, SavingValueCreateDto dto) {
+        if (dto.getDate().isAfter(LocalDate.now())){
+            throw new IllegalArgumentException("Date cannot be in the future");
+        }
+
         Saving saving = savingsRepository.findById(savingId)
                 .orElseThrow(() -> new IllegalArgumentException("Saving not found " + savingId));
         SavingValue value = new SavingValue();
@@ -87,6 +89,19 @@ public class SavingValueService {
     public boolean existForDate (Saving saving, LocalDate date ){
         return savingValueRepository.findBySavingAndDate(saving,date).isPresent();
     }
+
+    //daty ostatniej aktualizacji
+
+    public Map<Long, LocalDate> getLastUpdateDates() {
+        Map<Long, LocalDate> result = new HashMap<>();
+
+        for (Saving saving : savingsRepository.findAll()) {
+            savingValueRepository.findFirstBySavingOrderByDateDesc(saving)
+                    .ifPresent(v -> result.put(saving.getId(), v.getDate()));
+        }
+        return result;
+    }
+
 
 
 }

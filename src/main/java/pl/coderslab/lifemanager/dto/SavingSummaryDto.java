@@ -12,7 +12,7 @@ public class SavingSummaryDto {
     private Double startAmount;
     private Double endAmount;
     private Double changeAmount;
-    private Double percentage;
+    private Double portfolioPercentage;
 
 
 }
