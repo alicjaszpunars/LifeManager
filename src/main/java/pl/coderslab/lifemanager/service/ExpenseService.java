@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.coderslab.lifemanager.dto.CategorySumDto;
 import pl.coderslab.lifemanager.dto.ExpenseCreateDto;
-import pl.coderslab.lifemanager.dto.IncomeCreateDto;
 import pl.coderslab.lifemanager.entity.*;
 import pl.coderslab.lifemanager.repository.ExpenseCategoryRepository;
 import pl.coderslab.lifemanager.repository.ExpenseRepository;
